@@ -76,9 +76,6 @@ export const useAddTask = () => {
       }
       console.error(`Failed to add task: ${err.message}`);
     },
-    onSettled: () => {
-      queryClient.invalidateQueries({ queryKey: getTasksQueryKey() });
-    },
   });
 };
 
@@ -121,9 +118,7 @@ export const useUpdateTask = () => {
       }
       console.error(`Failed to update task: ${err.message}`);
     },
-    onSettled: () => {
-      queryClient.invalidateQueries({ queryKey: getTasksQueryKey() });
-    },
+  
   });
 };
 
@@ -154,9 +149,6 @@ export const useDeleteTask = () => {
         queryClient.setQueryData(getTasksQueryKey(), context.previous);
       }
       console.error(`Failed to delete task: ${err.message}`);
-    },
-    onSettled: () => {
-      queryClient.invalidateQueries({ queryKey: getTasksQueryKey() });
     },
   });
 };
